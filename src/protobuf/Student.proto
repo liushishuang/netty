@@ -1,0 +1,15 @@
+syntax = "proto2";
+package com.shengsiyuan.protobuf;
+
+//生成文件不允许修改和移动到其它包    protoc --java_out=src/main/java src/protobuf/Student.proto
+//加快解析速度
+option optimize_for = SPEED;
+//java类独有的两个选项 生成的包名+类名
+option java_package = "com.shengsiyuan.netty.sixth";
+option java_outer_classname = "DataInfo";
+
+message Student {
+    required string name = 1;
+    optional int32 age = 2;
+    optional string address = 3;
+}
