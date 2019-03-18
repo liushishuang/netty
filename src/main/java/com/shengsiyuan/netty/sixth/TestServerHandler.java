@@ -8,11 +8,14 @@ import io.netty.channel.SimpleChannelInboundHandler;
  * @Description:TODO
  * @Date: 22:21 2019/3/17
  */
-public class TestServerHandler extends SimpleChannelInboundHandler<DataInfo.Student> {
+public class TestServerHandler extends SimpleChannelInboundHandler<MyDataInfo.Person> {
 
     //接收消息后的处理
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, DataInfo.Student msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, MyDataInfo.Person msg) throws Exception {
+        System.out.println(msg.getName());
+        System.out.println(msg.getAge());
+        System.out.println(msg.getAddress());
     }
 
 
