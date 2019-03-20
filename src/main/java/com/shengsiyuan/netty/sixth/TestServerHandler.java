@@ -2,9 +2,7 @@ package com.shengsiyuan.netty.sixth;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-
 import static com.shengsiyuan.netty.sixth.MyDataInfo.MyMessage;
-
 /**
  * @Author: LiuShishuang
  * @Description:TODO
@@ -12,7 +10,7 @@ import static com.shengsiyuan.netty.sixth.MyDataInfo.MyMessage;
  */
 public class TestServerHandler extends SimpleChannelInboundHandler<MyDataInfo.MyMessage> {
 
-    //服务器端接收消息后的处理
+    //接收消息后的处理
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, MyMessage msg) throws Exception {
         MyMessage.DataType dataType = msg.getDataType();
@@ -31,7 +29,6 @@ public class TestServerHandler extends SimpleChannelInboundHandler<MyDataInfo.My
             System.out.println(cat.getCity());
 
         }
-
     }
 
 

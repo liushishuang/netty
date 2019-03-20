@@ -2,11 +2,8 @@ package com.shengsiyuan.netty.sixth;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-
-import java.util.Random;
-
 import static com.shengsiyuan.netty.sixth.MyDataInfo.MyMessage;
-import static com.shengsiyuan.netty.sixth.MyDataInfo.Person;
+import java.util.Random;
 
 /**
  * @Author: LiuShishuang
@@ -30,12 +27,12 @@ public class TestClientHandler extends SimpleChannelInboundHandler<MyMessage> {
         MyMessage myMessage = null;
         if (0 == randomInt) {
             myMessage = MyMessage
-                    .newBuilder()
+                .newBuilder()
                     .setDataType(MyMessage.DataType.PersonType)
                     .setPerson(
-                            Person.newBuilder()
-                                    .setName("张三")
-                                    .setAge(20)
+                            MyDataInfo.Person.newBuilder()
+                .setName("张三")
+                .setAge(20)
                                     .setAddress("北京").build()
                     )
                     .build();
@@ -50,7 +47,7 @@ public class TestClientHandler extends SimpleChannelInboundHandler<MyMessage> {
                                     .setAge(3)
                                     .build()
                     )
-                    .build();
+                .build();
         } else {
             myMessage = MyMessage
                     .newBuilder()
@@ -66,6 +63,6 @@ public class TestClientHandler extends SimpleChannelInboundHandler<MyMessage> {
         }
 
 
-        ctx.channel().writeAndFlush(myMessage);
+//        ctx.channel().writeAndFlush(person);
     }
 }

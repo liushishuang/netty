@@ -7,7 +7,7 @@ import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
-import static com.shengsiyuan.netty.sixth.MyDataInfo.MyMessage;
+
 /**
  * @Author: LiuShishuang
  * @Description:TODO
@@ -21,7 +21,7 @@ public class TestServerInitializer extends ChannelInitializer<SocketChannel> {
 
         pipeline.addLast(new ProtobufEncoder());
         //客户端向服务端发送对象类型(最外层消息实例)
-        pipeline.addLast(new ProtobufDecoder(MyMessage.getDefaultInstance()));
+        pipeline.addLast(new ProtobufDecoder(MyDataInfo.MyMessage.getDefaultInstance()));
         pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
         pipeline.addLast(new ProtobufVarint32FrameDecoder());
 
