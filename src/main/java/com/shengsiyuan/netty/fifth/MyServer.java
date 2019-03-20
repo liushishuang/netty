@@ -14,7 +14,11 @@ import java.net.InetSocketAddress;
  * @Author: LiuShishuang
  * @Description:TODO
  * @Date: 15:35 2019/3/17
- * WebSocket心跳机制
+ * WebSocket心跳机制,有前端页面
+ * - 基于HTML5的一部分, 依附于Http协议, 不需要Http2,
+ * - 升级成为  长连接(全双工,不需要根据请求/响应)
+ * - 只传送数据本身, 不需要Header  ...需要心跳监测
+ * - 可以用于非浏览器的场合 iOS Android
  */
 public class MyServer {
     public static void main(String[] args) {

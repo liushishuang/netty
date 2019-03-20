@@ -19,14 +19,16 @@ public class TestServer {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
-            //服务端启动
+            //服务端启动器
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             //定义启动的组 + 通道 + 子处理器
-            serverBootstrap.group(bossGroup, workerGroup)
+            serverBootstrap
+                    .group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new TestServerInitializer());
             //绑定端口号
             ChannelFuture channelFuture = serverBootstrap.bind(8899).sync();
+            //关闭
             channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();

@@ -13,6 +13,7 @@ import java.net.URI;
  * @Author: LiuShishuang
  * @Description:TODO
  * @Date: 18:20 2019/3/16
+ * 入门实例 客户端访问,服务端打印,启动顺序
  */
 public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
 
@@ -42,7 +43,7 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
                     .set(HttpHeaderNames.CONTENT_TYPE, "text/plain")
                     .set(HttpHeaderNames.CONTENT_LENGTH, content.readableBytes());
             ctx.writeAndFlush(response);
-            ctx.channel().close();// 根据
+            ctx.channel().close();
         }
     }
 

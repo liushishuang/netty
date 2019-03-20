@@ -14,6 +14,7 @@ import java.io.InputStreamReader;
  * @Author: LiuShishuang
  * @Description:TODO
  * @Date: 23:36 2019/3/16
+ * Socket,多用户
  */
 public class MyChatClient {
     public static void main(String[] args) {
@@ -26,7 +27,7 @@ public class MyChatClient {
                     .handler(new MyChatClientInitializer());
             Channel channel = bootstrap.connect("localhost", 8899).sync().channel();
 //            channelFuture.channel().closeFuture().sync();
-            //不断读取内容
+            //不断读取内容,给服务端
             BufferedReader bufferedReader = new BufferedReader((new InputStreamReader(System.in)));
             for (; ; ) {
                 channel.writeAndFlush(bufferedReader.readLine() + "\r\n");

@@ -10,6 +10,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
  * @Author: LiuShishuang
  * @Description:TODO
  * @Date: 21:37 2019/3/16
+ * 客户端和服务端的http请求
  */
 public class MyClient {
     /**

@@ -12,7 +12,7 @@ import io.netty.handler.logging.LoggingHandler;
  * @Author: LiuShishuang
  * @Description:TODO
  * @Date: 15:35 2019/3/17
- * 心跳机制
+ * 心跳机制,空闲状态监测管理
  */
 public class MyServer {
     public static void main(String[] args) {
@@ -23,7 +23,7 @@ public class MyServer {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .handler(new LoggingHandler(LogLevel.INFO))
+                    .handler(new LoggingHandler(LogLevel.INFO))  //日志记录
                     .childHandler(new MyServerInitializer());
 
             ChannelFuture channelFuture = serverBootstrap.bind(8899).sync();

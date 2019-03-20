@@ -9,6 +9,8 @@ option java_package = "com.shengsiyuan.netty.sixth";
 option java_outer_classname = "MyDataInfo";
 
 //传递任意类型 DataType(enum) + dataBody(oneof)
+//包装类型 进行传输
+//Netty服务端需要if.else判断类型,没有提供路由 =>(本质相同) SpringMVC使用DispatcherServlet控制器来控制 url和方法的对应关系
 message MyMessage {
 
     enum DataType {
@@ -18,7 +20,8 @@ message MyMessage {
     }
 
     required DataType data_type = 1;
-
+    //其中三个属性都有get/set方法,但是只能使用一个,不浪费内存
+    //构建对象的时候,除了DataType,需要手动set person/dog/cat 之一
     oneof dataBody {
         Person person = 2;
         Dog dog = 3;
@@ -32,6 +35,7 @@ message Person {
     optional int32 age = 2;
     optional string address = 3;
 }
+
 message Dog {
     optional string name = 1;
     optional int32 age = 2;

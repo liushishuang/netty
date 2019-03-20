@@ -18,13 +18,14 @@ public class MyServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-
+        //基于http
         pipeline.addLast(new HttpServerCodec());
         //用块的方式写的处理器
         pipeline.addLast(new ChunkedWriteHandler());
         //http消息聚合
         pipeline.addLast(new HttpObjectAggregator(8192));
         //协议  ws;//server:port/context_path
+        //请求路径分析  /ws
         pipeline.addLast(new WebSocketServerProtocolHandler("/ws"));
         pipeline.addLast(new TextWebSocketFrameHandler());
     }
