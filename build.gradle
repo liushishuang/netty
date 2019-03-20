@@ -13,6 +13,13 @@ targetCompatibility = 1.8
 repositories {
     mavenCentral()
 }
+
+//使用国内的阿里云仓库
+allprojects {
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    }
+}
 //依赖
 dependencies {
     testCompile(
@@ -22,9 +29,15 @@ dependencies {
             'io.netty:netty-all:4.1.34.Final',
             'com.google.protobuf:protobuf-java:3.7.0',
             'com.google.protobuf:protobuf-java-util:3.7.0',
-            'org.apache.thrift:libthrift:0.12.0'
-
-
+            'org.apache.thrift:libthrift:0.12.0',
+            'io.grpc:grpc-netty-shaded:1.19.0',
+            'io.grpc:grpc-protobuf:1.19.0',
+            'io.grpc:grpc-stub:1.19.0'
     )
-
+}
+//idea启动的时候读取系统环境变量,修改后需要重启idea
+//gradle构建版本控制
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.9'
+    distributionType = 'all'
 }

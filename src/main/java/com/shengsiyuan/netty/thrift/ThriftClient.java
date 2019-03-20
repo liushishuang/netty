@@ -28,11 +28,13 @@ public class ThriftClient {
         TTransport transport = new TFramedTransport(new TSocket("localhost", 8899), 600);
         TProtocol protocol = new TCompactProtocol(transport);
 
+        //client
         PersonService.Client client = new PersonService.Client(protocol);
 
         try {
             transport.open();
-            //通过网络向服务器发送请求,看似调用本地方法
+
+            //通过网络向服务器发送请求,调用方法
             Person person = client.getPersonByUsername("张三");
             System.out.println(person.getUsername());
             System.out.println(person.getAge());
@@ -44,8 +46,7 @@ public class ThriftClient {
                     .setUsername("李四")
                     .setAge(20)
                     .setMarried(true);
-            client.savePerson(person);
-
+            client.savePerson(person1);
 
         } catch (Exception exception) {
             throw new RuntimeException(exception.getMessage(), exception);

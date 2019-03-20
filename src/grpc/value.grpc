@@ -1,0 +1,4 @@
+Simple RPC: 一般的RPC调用
+Server-side streaming RPC : 一个请求对象,服务端可以返回多个结果对象
+Client-side streaming RPC: 客户端传入多个请求对象,服务端返回一个相应结果
+Bidirectional streaming RPC: 结合客户端流式rpc和服务端流式rpc，可以传入多个对象，返回多个响应对象
