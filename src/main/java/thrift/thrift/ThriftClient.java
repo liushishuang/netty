@@ -1,4 +1,4 @@
-package com.shengsiyuan.netty.thrift;
+package thrift.thrift;
 
 import org.apache.thrift.protocol.TCompactProtocol;
 import org.apache.thrift.protocol.TProtocol;

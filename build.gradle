@@ -1,9 +1,11 @@
-plugins {
-    id 'java'
-}
 
 group 'com.shengsiyuan'
 version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'com.google.protobuf'
+
+
 
 //设置源和目标的编译级别
 sourceCompatibility = 1.8
@@ -41,3 +43,41 @@ task wrapper(type: Wrapper) {
     gradleVersion = '4.9'
     distributionType = 'all'
 }
+
+
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.5'
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.6.1"
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.19.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
+
+
+sourceSets{
+    main{
+        proto{
+            srcDir 'src/main/proto'
+            srcDir 'src/main'
+        }
+    }
+}
+

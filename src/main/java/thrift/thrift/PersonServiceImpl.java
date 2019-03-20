@@ -1,4 +1,4 @@
-package com.shengsiyuan.netty.thrift;
+package thrift.thrift;
 
 import org.apache.thrift.TException;
 import thrift.generated.DataException;
