@@ -1,30 +1,45 @@
-
 group 'com.shengsiyuan'
 version '1.0'
 
+//task的第三方引入,插件式
 apply plugin: 'java'
 apply plugin: 'com.google.protobuf'
 
+//因为gradle本身也是groovy语言,所以脚本一开始要为gradle准备执行环境
+buildscript {
+    //gradle脚本的依赖.
+    repositories {
+        //手动指定阿里云
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        //https://bintray.com/bintray/jcenter
+        jcenter()
+        //https://search.maven.org/
+        mavenCentral()
+    }
+    //gradle执行的依赖,需要classpath指定
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.5'
+    }
+}
 
 
 //设置源和目标的编译级别
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-//仓库
+//项目本身的依赖
 repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    jcenter()
     mavenCentral()
 }
 
-//使用国内的阿里云仓库
-allprojects {
-    repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-    }
-}
-//依赖
+
+//依赖: 项目本身的依赖
 dependencies {
+    //编译测试时需要的依赖
     testCompile(
+//            compile group: 'junit', name: 'junit', version: '4.12'
             "junit:junit:4.12"
     )
     compile(
@@ -38,22 +53,12 @@ dependencies {
     )
 }
 //idea启动的时候读取系统环境变量,修改后需要重启idea
-//gradle构建版本控制
+//当前项目创建一个wrapper包,并且指定版本 + 使用gradle wrapper
 task wrapper(type: Wrapper) {
     gradleVersion = '4.9'
     distributionType = 'all'
 }
 
-
-
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.5'
-    }
-}
 
 protobuf {
     protoc {
@@ -72,9 +77,9 @@ protobuf {
 }
 
 
-sourceSets{
-    main{
-        proto{
+sourceSets {
+    main {
+        proto {
             srcDir 'src/main/proto'
             srcDir 'src/main'
         }

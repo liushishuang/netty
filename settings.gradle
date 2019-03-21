@@ -1,3 +1,5 @@
-//多模块时进行使用
+//指定编译的根项目
 rootProject.name = 'netty_lecture'
+//多模块时进行使用
+//include ':project1',':project2'
 

@@ -1,0 +1,68 @@
+println("hello world")
+
+//变量
+def a = "zhangsan"
+def b = "i am $a"
+def lines = ''' 
+ value
+ '''
+
+def list = ["a", 1, 2];
+def value = list.getAt(2)
+
+def map = ["a": 100, "b": 200]
+
+
+//闭包
+def method1 = {
+    println("helloworld")
+    println(it)
+}
+
+def method2 = { param1, param2 ->
+    println(param1)
+    println(param2)
+    //每个闭包在定义的时候就带了一个默认的参数it
+}
+//闭包调用
+method1.call(100)
+//将闭包作为参数使用
+list.each { method1 }
+
+//gradle的执行过程
+//1. 初始化构建: 读取项目的setting.gradle,
+//2. 配置构建: 当gradle初始化完成后，开始执行project后会执行这个方法
+gradle.afterProject({
+    project ->
+        println("this projcet name is = " + project.getName())
+        println("this projcet path is = " + project.getPath())
+})
+
+//多项目,设置所有模块的共同使用的内容
+allprojects {}
+subprojects {}
+
+//依赖: 项目本身的依赖
+dependencies {
+    //编译测试时需要的依赖
+    testCompile(
+            "junit:junit:4.12"
+    )
+    //运行测试时需要的依赖,包括testCompile的依赖
+    testRuntime()
+    //编译代码是需要使用的依赖
+    compile()
+    //compile group: 'junit', name: 'junit', version: '4.12'
+    
+    //本地jar包或者指定某一个jar包
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/xxxx.jar')
+
+    //library依赖
+    compile project(':名称')
+    
+    //产品代码在运行时需要的依赖,包括compile的依赖
+    runtime()
+}
+//3. 执行构建
+//4. 完成构建或者失败
