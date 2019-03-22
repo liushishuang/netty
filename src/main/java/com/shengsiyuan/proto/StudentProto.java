@@ -30,15 +30,25 @@ public final class StudentProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_shengsiyuan_proto_StudentRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_shengsiyuan_proto_StudentResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_shengsiyuan_proto_StudentResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_shengsiyuan_proto_StudentResponseList_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_shengsiyuan_proto_StudentResponseList_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_shengsiyuan_proto_StudentResponse_descriptor;
+    internal_static_com_shengsiyuan_proto_StreamRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_shengsiyuan_proto_StudentResponse_fieldAccessorTable;
+      internal_static_com_shengsiyuan_proto_StreamRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_shengsiyuan_proto_StreamResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_shengsiyuan_proto_StreamResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -47,15 +57,17 @@ public final class StudentProto {
   private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    String[] descriptorData = {
+    java.lang.String[] descriptorData = {
       "\n\rStudent.proto\022\025com.shengsiyuan.proto\"\035" +
       "\n\tMyRequest\022\020\n\010username\030\001 \001(\t\"\036\n\nMyRespo" +
       "nse\022\020\n\010realname\030\002 \001(\t\"\035\n\016StudentRequest\022" +
-      "\013\n\003age\030\001 \001(\005\"V\n\023StudentResponseList\022?\n\017s" +
-      "tudentResponse\030\001 \003(\0132&.com.shengsiyuan.p" +
-      "roto.StudentResponse\":\n\017StudentResponse\022" +
-      "\014\n\004name\030\001 \001(\t\022\013\n\003age\030\002 \001(\005\022\014\n\004city\030\003 \001(\t" +
-      "2\303\002\n\016StudentService\022\\\n\025GetRealNameByUser" +
+      "\013\n\003age\030\001 \001(\005\":\n\017StudentResponse\022\014\n\004name\030" +
+      "\001 \001(\t\022\013\n\003age\030\002 \001(\005\022\014\n\004city\030\003 \001(\t\"V\n\023Stud" +
+      "entResponseList\022?\n\017studentResponse\030\001 \003(\013" +
+      "2&.com.shengsiyuan.proto.StudentResponse" +
+      "\"%\n\rStreamRequest\022\024\n\014request_info\030\001 \001(\t\"" +
+      "\'\n\016StreamResponse\022\025\n\rresponse_info\030\001 \001(\t" +
+      "2\236\003\n\016StudentService\022\\\n\025GetRealNameByUser" +
       "name\022 .com.shengsiyuan.proto.MyRequest\032!" +
       ".com.shengsiyuan.proto.MyResponse\022c\n\020Get" +
       "StudentsByAge\022%.com.shengsiyuan.proto.St" +
@@ -63,8 +75,10 @@ public final class StudentProto {
       "dentResponse0\001\022n\n\027GetStudentWrapperByAge" +
       "s\022%.com.shengsiyuan.proto.StudentRequest" +
       "\032*.com.shengsiyuan.proto.StudentResponse" +
-      "List(\001B\'\n\025com.shengsiyuan.protoB\014Student" +
-      "ProtoP\001b\006proto3"
+      "List(\001\022Y\n\006BiTalk\022$.com.shengsiyuan.proto" +
+      ".StreamRequest\032%.com.shengsiyuan.proto.S" +
+      "treamResponse(\0010\001B\'\n\025com.shengsiyuan.pro" +
+      "toB\014StudentProtoP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -83,31 +97,43 @@ public final class StudentProto {
     internal_static_com_shengsiyuan_proto_MyRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_shengsiyuan_proto_MyRequest_descriptor,
-        new String[] { "Username", });
+        new java.lang.String[] { "Username", });
     internal_static_com_shengsiyuan_proto_MyResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_shengsiyuan_proto_MyResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_shengsiyuan_proto_MyResponse_descriptor,
-        new String[] { "Realname", });
+        new java.lang.String[] { "Realname", });
     internal_static_com_shengsiyuan_proto_StudentRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_com_shengsiyuan_proto_StudentRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_shengsiyuan_proto_StudentRequest_descriptor,
-        new String[] { "Age", });
-    internal_static_com_shengsiyuan_proto_StudentResponseList_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_com_shengsiyuan_proto_StudentResponseList_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_shengsiyuan_proto_StudentResponseList_descriptor,
-        new String[] { "StudentResponse", });
+        new java.lang.String[] { "Age", });
     internal_static_com_shengsiyuan_proto_StudentResponse_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_com_shengsiyuan_proto_StudentResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_shengsiyuan_proto_StudentResponse_descriptor,
-        new String[] { "Name", "Age", "City", });
+        new java.lang.String[] { "Name", "Age", "City", });
+    internal_static_com_shengsiyuan_proto_StudentResponseList_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_com_shengsiyuan_proto_StudentResponseList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_shengsiyuan_proto_StudentResponseList_descriptor,
+        new java.lang.String[] { "StudentResponse", });
+    internal_static_com_shengsiyuan_proto_StreamRequest_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_com_shengsiyuan_proto_StreamRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_shengsiyuan_proto_StreamRequest_descriptor,
+        new java.lang.String[] { "RequestInfo", });
+    internal_static_com_shengsiyuan_proto_StreamResponse_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_com_shengsiyuan_proto_StreamResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_shengsiyuan_proto_StreamResponse_descriptor,
+        new java.lang.String[] { "ResponseInfo", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

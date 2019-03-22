@@ -4,21 +4,19 @@
 package com.shengsiyuan.proto;
 
 /**
- * Protobuf type {@code com.shengsiyuan.proto.StudentResponse}
+ * Protobuf type {@code com.shengsiyuan.proto.StreamResponse}
  */
-public  final class StudentResponse extends
+public  final class StreamResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:com.shengsiyuan.proto.StudentResponse)
-    StudentResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:com.shengsiyuan.proto.StreamResponse)
+    StreamResponseOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use StudentResponse.newBuilder() to construct.
-  private StudentResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use StreamResponse.newBuilder() to construct.
+  private StreamResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private StudentResponse() {
-    name_ = "";
-    age_ = 0;
-    city_ = "";
+  private StreamResponse() {
+    responseInfo_ = "";
   }
 
   @java.lang.Override
@@ -26,7 +24,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private StudentResponse(
+  private StreamResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -48,18 +46,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            name_ = s;
-            break;
-          }
-          case 16: {
-
-            age_ = input.readInt32();
-            break;
-          }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            city_ = s;
+            responseInfo_ = s;
             break;
           }
           default: {
@@ -83,88 +70,45 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.shengsiyuan.proto.StudentProto.internal_static_com_shengsiyuan_proto_StudentResponse_descriptor;
+    return com.shengsiyuan.proto.StudentProto.internal_static_com_shengsiyuan_proto_StreamResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.shengsiyuan.proto.StudentProto.internal_static_com_shengsiyuan_proto_StudentResponse_fieldAccessorTable
+    return com.shengsiyuan.proto.StudentProto.internal_static_com_shengsiyuan_proto_StreamResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.shengsiyuan.proto.StudentResponse.class, com.shengsiyuan.proto.StudentResponse.Builder.class);
+            com.shengsiyuan.proto.StreamResponse.class, com.shengsiyuan.proto.StreamResponse.Builder.class);
   }
 
-  public static final int NAME_FIELD_NUMBER = 1;
-  private volatile java.lang.Object name_;
+  public static final int RESPONSE_INFO_FIELD_NUMBER = 1;
+  private volatile java.lang.Object responseInfo_;
   /**
-   * <code>string name = 1;</code>
+   * <code>string response_info = 1;</code>
    */
-  public java.lang.String getName() {
-    java.lang.Object ref = name_;
+  public java.lang.String getResponseInfo() {
+    java.lang.Object ref = responseInfo_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      name_ = s;
+      responseInfo_ = s;
       return s;
     }
   }
   /**
-   * <code>string name = 1;</code>
+   * <code>string response_info = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getNameBytes() {
-    java.lang.Object ref = name_;
+      getResponseInfoBytes() {
+    java.lang.Object ref = responseInfo_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      name_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int AGE_FIELD_NUMBER = 2;
-  private int age_;
-  /**
-   * <code>int32 age = 2;</code>
-   */
-  public int getAge() {
-    return age_;
-  }
-
-  public static final int CITY_FIELD_NUMBER = 3;
-  private volatile java.lang.Object city_;
-  /**
-   * <code>string city = 3;</code>
-   */
-  public java.lang.String getCity() {
-    java.lang.Object ref = city_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      city_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string city = 3;</code>
-   */
-  public com.google.protobuf.ByteString
-      getCityBytes() {
-    java.lang.Object ref = city_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      city_ = b;
+      responseInfo_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -185,14 +129,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
-    }
-    if (age_ != 0) {
-      output.writeInt32(2, age_);
-    }
-    if (!getCityBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, city_);
+    if (!getResponseInfoBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, responseInfo_);
     }
     unknownFields.writeTo(output);
   }
@@ -203,15 +141,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
-    }
-    if (age_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, age_);
-    }
-    if (!getCityBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, city_);
+    if (!getResponseInfoBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, responseInfo_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -223,18 +154,14 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.shengsiyuan.proto.StudentResponse)) {
+    if (!(obj instanceof com.shengsiyuan.proto.StreamResponse)) {
       return super.equals(obj);
     }
-    com.shengsiyuan.proto.StudentResponse other = (com.shengsiyuan.proto.StudentResponse) obj;
+    com.shengsiyuan.proto.StreamResponse other = (com.shengsiyuan.proto.StreamResponse) obj;
 
     boolean result = true;
-    result = result && getName()
-        .equals(other.getName());
-    result = result && (getAge()
-        == other.getAge());
-    result = result && getCity()
-        .equals(other.getCity());
+    result = result && getResponseInfo()
+        .equals(other.getResponseInfo());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -246,80 +173,76 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + AGE_FIELD_NUMBER;
-    hash = (53 * hash) + getAge();
-    hash = (37 * hash) + CITY_FIELD_NUMBER;
-    hash = (53 * hash) + getCity().hashCode();
+    hash = (37 * hash) + RESPONSE_INFO_FIELD_NUMBER;
+    hash = (53 * hash) + getResponseInfo().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.shengsiyuan.proto.StudentResponse parseFrom(
+  public static com.shengsiyuan.proto.StreamResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.shengsiyuan.proto.StudentResponse parseFrom(
+  public static com.shengsiyuan.proto.StreamResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.shengsiyuan.proto.StudentResponse parseFrom(
+  public static com.shengsiyuan.proto.StreamResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.shengsiyuan.proto.StudentResponse parseFrom(
+  public static com.shengsiyuan.proto.StreamResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.shengsiyuan.proto.StudentResponse parseFrom(byte[] data)
+  public static com.shengsiyuan.proto.StreamResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.shengsiyuan.proto.StudentResponse parseFrom(
+  public static com.shengsiyuan.proto.StreamResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.shengsiyuan.proto.StudentResponse parseFrom(java.io.InputStream input)
+  public static com.shengsiyuan.proto.StreamResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.shengsiyuan.proto.StudentResponse parseFrom(
+  public static com.shengsiyuan.proto.StreamResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.shengsiyuan.proto.StudentResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.shengsiyuan.proto.StreamResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.shengsiyuan.proto.StudentResponse parseDelimitedFrom(
+  public static com.shengsiyuan.proto.StreamResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.shengsiyuan.proto.StudentResponse parseFrom(
+  public static com.shengsiyuan.proto.StreamResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.shengsiyuan.proto.StudentResponse parseFrom(
+  public static com.shengsiyuan.proto.StreamResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -332,7 +255,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.shengsiyuan.proto.StudentResponse prototype) {
+  public static Builder newBuilder(com.shengsiyuan.proto.StreamResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -348,26 +271,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code com.shengsiyuan.proto.StudentResponse}
+   * Protobuf type {@code com.shengsiyuan.proto.StreamResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:com.shengsiyuan.proto.StudentResponse)
-      com.shengsiyuan.proto.StudentResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:com.shengsiyuan.proto.StreamResponse)
+      com.shengsiyuan.proto.StreamResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.shengsiyuan.proto.StudentProto.internal_static_com_shengsiyuan_proto_StudentResponse_descriptor;
+      return com.shengsiyuan.proto.StudentProto.internal_static_com_shengsiyuan_proto_StreamResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.shengsiyuan.proto.StudentProto.internal_static_com_shengsiyuan_proto_StudentResponse_fieldAccessorTable
+      return com.shengsiyuan.proto.StudentProto.internal_static_com_shengsiyuan_proto_StreamResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.shengsiyuan.proto.StudentResponse.class, com.shengsiyuan.proto.StudentResponse.Builder.class);
+              com.shengsiyuan.proto.StreamResponse.class, com.shengsiyuan.proto.StreamResponse.Builder.class);
     }
 
-    // Construct using com.shengsiyuan.proto.StudentResponse.newBuilder()
+    // Construct using com.shengsiyuan.proto.StreamResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -385,11 +308,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      name_ = "";
-
-      age_ = 0;
-
-      city_ = "";
+      responseInfo_ = "";
 
       return this;
     }
@@ -397,17 +316,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.shengsiyuan.proto.StudentProto.internal_static_com_shengsiyuan_proto_StudentResponse_descriptor;
+      return com.shengsiyuan.proto.StudentProto.internal_static_com_shengsiyuan_proto_StreamResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.shengsiyuan.proto.StudentResponse getDefaultInstanceForType() {
-      return com.shengsiyuan.proto.StudentResponse.getDefaultInstance();
+    public com.shengsiyuan.proto.StreamResponse getDefaultInstanceForType() {
+      return com.shengsiyuan.proto.StreamResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.shengsiyuan.proto.StudentResponse build() {
-      com.shengsiyuan.proto.StudentResponse result = buildPartial();
+    public com.shengsiyuan.proto.StreamResponse build() {
+      com.shengsiyuan.proto.StreamResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -415,11 +334,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.shengsiyuan.proto.StudentResponse buildPartial() {
-      com.shengsiyuan.proto.StudentResponse result = new com.shengsiyuan.proto.StudentResponse(this);
-      result.name_ = name_;
-      result.age_ = age_;
-      result.city_ = city_;
+    public com.shengsiyuan.proto.StreamResponse buildPartial() {
+      com.shengsiyuan.proto.StreamResponse result = new com.shengsiyuan.proto.StreamResponse(this);
+      result.responseInfo_ = responseInfo_;
       onBuilt();
       return result;
     }
@@ -458,25 +375,18 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.shengsiyuan.proto.StudentResponse) {
-        return mergeFrom((com.shengsiyuan.proto.StudentResponse)other);
+      if (other instanceof com.shengsiyuan.proto.StreamResponse) {
+        return mergeFrom((com.shengsiyuan.proto.StreamResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.shengsiyuan.proto.StudentResponse other) {
-      if (other == com.shengsiyuan.proto.StudentResponse.getDefaultInstance()) return this;
-      if (!other.getName().isEmpty()) {
-        name_ = other.name_;
-        onChanged();
-      }
-      if (other.getAge() != 0) {
-        setAge(other.getAge());
-      }
-      if (!other.getCity().isEmpty()) {
-        city_ = other.city_;
+    public Builder mergeFrom(com.shengsiyuan.proto.StreamResponse other) {
+      if (other == com.shengsiyuan.proto.StreamResponse.getDefaultInstance()) return this;
+      if (!other.getResponseInfo().isEmpty()) {
+        responseInfo_ = other.responseInfo_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -494,11 +404,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.shengsiyuan.proto.StudentResponse parsedMessage = null;
+      com.shengsiyuan.proto.StreamResponse parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.shengsiyuan.proto.StudentResponse) e.getUnfinishedMessage();
+        parsedMessage = (com.shengsiyuan.proto.StreamResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -508,166 +418,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object name_ = "";
+    private java.lang.Object responseInfo_ = "";
     /**
-     * <code>string name = 1;</code>
+     * <code>string response_info = 1;</code>
      */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
+    public java.lang.String getResponseInfo() {
+      java.lang.Object ref = responseInfo_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        name_ = s;
+        responseInfo_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>string response_info = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
+        getResponseInfoBytes() {
+      java.lang.Object ref = responseInfo_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        name_ = b;
+        responseInfo_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>string response_info = 1;</code>
      */
-    public Builder setName(
+    public Builder setResponseInfo(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      name_ = value;
+      responseInfo_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>string response_info = 1;</code>
      */
-    public Builder clearName() {
+    public Builder clearResponseInfo() {
       
-      name_ = getDefaultInstance().getName();
+      responseInfo_ = getDefaultInstance().getResponseInfo();
       onChanged();
       return this;
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>string response_info = 1;</code>
      */
-    public Builder setNameBytes(
+    public Builder setResponseInfoBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      name_ = value;
-      onChanged();
-      return this;
-    }
-
-    private int age_ ;
-    /**
-     * <code>int32 age = 2;</code>
-     */
-    public int getAge() {
-      return age_;
-    }
-    /**
-     * <code>int32 age = 2;</code>
-     */
-    public Builder setAge(int value) {
-      
-      age_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 age = 2;</code>
-     */
-    public Builder clearAge() {
-      
-      age_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object city_ = "";
-    /**
-     * <code>string city = 3;</code>
-     */
-    public java.lang.String getCity() {
-      java.lang.Object ref = city_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        city_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string city = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getCityBytes() {
-      java.lang.Object ref = city_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        city_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string city = 3;</code>
-     */
-    public Builder setCity(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      city_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string city = 3;</code>
-     */
-    public Builder clearCity() {
-      
-      city_ = getDefaultInstance().getCity();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string city = 3;</code>
-     */
-    public Builder setCityBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      city_ = value;
+      responseInfo_ = value;
       onChanged();
       return this;
     }
@@ -684,41 +499,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:com.shengsiyuan.proto.StudentResponse)
+    // @@protoc_insertion_point(builder_scope:com.shengsiyuan.proto.StreamResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:com.shengsiyuan.proto.StudentResponse)
-  private static final com.shengsiyuan.proto.StudentResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:com.shengsiyuan.proto.StreamResponse)
+  private static final com.shengsiyuan.proto.StreamResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.shengsiyuan.proto.StudentResponse();
+    DEFAULT_INSTANCE = new com.shengsiyuan.proto.StreamResponse();
   }
 
-  public static com.shengsiyuan.proto.StudentResponse getDefaultInstance() {
+  public static com.shengsiyuan.proto.StreamResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<StudentResponse>
-      PARSER = new com.google.protobuf.AbstractParser<StudentResponse>() {
+  private static final com.google.protobuf.Parser<StreamResponse>
+      PARSER = new com.google.protobuf.AbstractParser<StreamResponse>() {
     @java.lang.Override
-    public StudentResponse parsePartialFrom(
+    public StreamResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new StudentResponse(input, extensionRegistry);
+      return new StreamResponse(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<StudentResponse> parser() {
+  public static com.google.protobuf.Parser<StreamResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<StudentResponse> getParserForType() {
+  public com.google.protobuf.Parser<StreamResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.shengsiyuan.proto.StudentResponse getDefaultInstanceForType() {
+  public com.shengsiyuan.proto.StreamResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

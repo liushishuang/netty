@@ -6,7 +6,7 @@ package com.shengsiyuan.proto;
 
 option java_package = "com.shengsiyuan.proto";
 option java_outer_classname = "StudentProto";
-//生成多个文件
+//message生成多个文件,导入的时候会简介,否则需要import a.b.c
 option java_multiple_files = true;
 
 //Simple RPC: 一般的RPC调用
@@ -14,16 +14,16 @@ option java_multiple_files = true;
 //Client-side streaming RPC: 客户端传入多个请求对象,服务端返回一个相应结果
 //Bidirectional streaming RPC: 结合客户端流式rpc和服务端流式rpc，可以传入多个对象，返回多个响应对象
 
-//返回值为void, 放在response中
 //请求和响应必须是message类型
 //方法名称采用首字母大写的驼峰
 service StudentService {
     rpc GetRealNameByUsername (MyRequest) returns (MyResponse);
     rpc GetStudentsByAge (StudentRequest) returns (stream StudentResponse);
     rpc GetStudentWrapperByAges (stream StudentRequest) returns (StudentResponseList);
+    rpc BiTalk (stream StreamRequest) returns (stream StreamResponse);
 }
 
-
+//普通请求
 message MyRequest {
     string username = 1;
 }
@@ -31,16 +31,24 @@ message MyRequest {
 message MyResponse {
     string realname = 2;
 }
+//返回值为stream
 message StudentRequest {
     int32 age = 1;
 }
-//集合
-message StudentResponseList {
-    repeated StudentResponse studentResponse = 1;
-}
-//对象
 message StudentResponse {
     string name = 1;
     int32 age = 2;
     string city = 3;
+}
+//请求为stream
+message StudentResponseList {
+    repeated StudentResponse studentResponse = 1;
+}
+
+//请求和响应都是stream
+message StreamRequest {
+    string request_info = 1;
+}
+message StreamResponse {
+    string response_info = 1;
 }

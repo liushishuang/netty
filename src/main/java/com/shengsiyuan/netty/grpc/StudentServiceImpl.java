@@ -3,6 +3,8 @@ package com.shengsiyuan.netty.grpc;
 import com.shengsiyuan.proto.*;
 import io.grpc.stub.StreamObserver;
 
+import java.util.UUID;
+
 /**
  * @Author: LiuShishuang
  * @Description:TODO
@@ -97,4 +99,30 @@ public class StudentServiceImpl extends StudentServiceGrpc.StudentServiceImplBas
         };
     }
 
+    @Override
+    public StreamObserver<StreamRequest> biTalk(StreamObserver<StreamResponse> responseObserver) {
+        return new StreamObserver<StreamRequest>() {
+            @Override
+            public void onNext(StreamRequest value) {
+                //接收到客户端的请求
+                System.out.println("onNext: " + value.getRequestInfo());
+                //向客户端返回
+                responseObserver.onNext(
+                        StreamResponse.newBuilder()
+                                .setResponseInfo(UUID.randomUUID().toString())
+                                .build());
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                System.out.println(t.getMessage());
+            }
+
+            @Override
+            public void onCompleted() {
+                //一方关闭流之后,开启将不再具有意义
+                responseObserver.onCompleted();
+            }
+        };
+    }
 }

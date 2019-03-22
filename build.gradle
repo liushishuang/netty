@@ -16,7 +16,7 @@ buildscript {
         //https://search.maven.org/
         mavenCentral()
     }
-    //gradle执行的依赖,需要classpath指定
+    //gradle执行的依赖,需要classpath指定 => 改变generateProto时文件位置
     dependencies {
         classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.5'
     }
@@ -69,19 +69,16 @@ protobuf {
             artifact = 'io.grpc:protoc-gen-grpc-java:1.19.0'
         }
     }
+//    message目录
+    generateProtoTasks.generatedFilesBaseDir = "src"
+
     generateProtoTasks {
         all()*.plugins {
-            grpc {}
-        }
-    }
-}
-
-
-sourceSets {
-    main {
-        proto {
-            srcDir 'src/main/proto'
-            srcDir 'src/main'
+            grpc {
+                // grpc目录(方法目录)
+                // "$generatedFilesBaseDir/$sourceSet/grpcjava"
+                setOutputSubDir 'java'
+            }
         }
     }
 }
