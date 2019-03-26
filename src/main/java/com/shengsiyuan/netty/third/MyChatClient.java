@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
  * @Author: LiuShishuang
  * @Description:TODO
  * @Date: 23:36 2019/3/16
- * Socket,多用户
+ * 多用户聊天程序 (一个服务端,多个客户端)
  */
 public class MyChatClient {
     public static void main(String[] args) {
@@ -23,10 +23,9 @@ public class MyChatClient {
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(eventLoopGroup)
                     .channel(NioSocketChannel.class)
-                    //客户端使用handler,针对boss
                     .handler(new MyChatClientInitializer());
             Channel channel = bootstrap.connect("localhost", 8899).sync().channel();
-//            channelFuture.channel().closeFuture().sync();
+
             //不断读取内容,给服务端
             BufferedReader bufferedReader = new BufferedReader((new InputStreamReader(System.in)));
             for (; ; ) {

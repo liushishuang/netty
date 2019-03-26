@@ -17,7 +17,7 @@ public class MyChatServerHandler extends SimpleChannelInboundHandler<String> {
     private static ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
     /**
-     * 连接: 打印已经上线,并且通知其它
+     * 连接  : 打印已经上线,加入到group中并且通知其它
      * 未连接: 打印已经下线,通知其它
      */
     @Override
@@ -32,7 +32,7 @@ public class MyChatServerHandler extends SimpleChannelInboundHandler<String> {
         });
     }
 
-    //建立好连接后,向所有的对象广播
+    //建立好连接后,向所有其它的对象广播
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();

@@ -10,18 +10,24 @@ import io.netty.util.CharsetUtil;
 import java.net.URI;
 
 /**
+ * Http请求服务端
  * @Author: LiuShishuang
  * @Description:TODO
  * @Date: 18:20 2019/3/16
- * 入门实例 客户端访问,服务端打印,启动顺序
+ * InBound读取客户端数据,OutBound客户端使用
  */
 public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
-
-    //读取客户端请求并返回响应给客户端
+    /**
+     * @param ctx 上下文对象
+     * @param msg 请求对象
+     * @throws Exception
+     */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
-        System.out.println(msg.getClass()); //请求类型
-        System.out.println(ctx.channel().remoteAddress()); //远端地址
+        //请求类型
+        System.out.println(msg.getClass());
+        //远端地址
+        System.out.println(ctx.channel().remoteAddress());
         Thread.sleep(8000);
 
 
@@ -29,12 +35,14 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
             HttpRequest httpRequest = (HttpRequest) msg;
             System.out.println("请求方法名:" + httpRequest.method().name());
             URI uri = new URI(httpRequest.uri());
+            //处理chrome浏览器二次请求问题
             if ("/favicon.ico".equals(uri.getPath())) {
                 System.out.println("请求favicon.ico");
                 return;
             }
-
+            //构造ByteBuf对象 存储数据
             ByteBuf content = Unpooled.copiedBuffer("Hello World", CharsetUtil.UTF_8);
+
             //构造响应的对象,
             FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1,
                     HttpResponseStatus.OK,
@@ -48,9 +56,9 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
     }
 
     @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("channel active 3 start method");
-        super.channelActive(ctx);
+    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel added 1");
+        super.handlerAdded(ctx);
     }
 
     @Override
@@ -60,9 +68,9 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
     }
 
     @Override
-    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("channel added 1");
-        super.handlerAdded(ctx);
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel active 3 start method");
+        super.channelActive(ctx);
     }
 
     @Override
