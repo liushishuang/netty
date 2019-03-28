@@ -50,7 +50,9 @@ dependencies {
             'org.apache.thrift:libthrift:0.12.0',
             'io.grpc:grpc-netty-shaded:1.19.0',
             'io.grpc:grpc-protobuf:1.19.0',
-            'io.grpc:grpc-stub:1.19.0'
+            'io.grpc:grpc-stub:1.19.0',
+            'org.projectlombok:lombok:1.18.6'
+
     )
 }
 //idea启动的时候读取系统环境变量,修改后需要重启idea
