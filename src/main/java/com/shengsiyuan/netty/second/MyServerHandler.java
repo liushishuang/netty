@@ -13,9 +13,11 @@ import java.util.UUID;
 public class MyServerHandler extends SimpleChannelInboundHandler<String> {
 
 
+    /**
+     * 如果这里的代码如果同步,耗时,会阻塞netty => 使用业务线程池
+     */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-
         System.out.println(ctx.channel().remoteAddress() + ":" + msg);
         ctx.channel().writeAndFlush("from server:" + UUID.randomUUID());
     }

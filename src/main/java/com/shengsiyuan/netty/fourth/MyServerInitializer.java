@@ -17,7 +17,7 @@ public class MyServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        //空闲状态监测处理器
+        //心跳监测->空闲状态监测处理器(读空闲,写空闲,读写空闲)
         pipeline.addLast(new IdleStateHandler(5,7,3, TimeUnit.SECONDS));
         pipeline.addLast(new MyServerHandler());
     }

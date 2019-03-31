@@ -2,7 +2,7 @@ namespace java thrift.generated
 //python命名空间
 namespace py py.thrift.generated
 
-//IDL(interface description language)
+//IDL(interface description language)更加符合java语言的感官
 //生成文件命令,生成后手动改变文件位置
 // thrift --gen java src/thrift/data.thrift
 // thrift --gen py src/thrift/data.thrift

@@ -9,7 +9,15 @@ import io.netty.handler.codec.http.HttpServerCodec;
  * @Author: LiuShishuang
  * @Description:TODO
  * @Date: 18:16 2019/3/16
- * 自定义通道初始化器
+ * 传递SocketChannel
+ * initChannel中获取pipeline对象
+ * HttpServerCodec: 处理http请求
+ * LengthFieldBasedFrameDecoder,LengthFieldPrepender: 处理粘包问题
+ * StringDecoder,StringEncoder: 字符串编码问题
+ * DelimiterBasedFrameDecoder: 聊天消息使用
+ * IdleStateHandler: 空闲状态监测处理器
+ * ChunkedWriteHandler,HttpObjectAggregator,WebSocketServerProtocolHandler: Websocket使用
+ * ProtobufEncoder,ProtobufDecoder,ProtobufVarint32LengthFieldPrepender,ProtobufVarint32FrameDecoder: 传递Protobuf支持
  */
 public class TestServerInitializer extends ChannelInitializer<SocketChannel> {
 

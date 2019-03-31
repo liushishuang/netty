@@ -12,6 +12,14 @@ import io.netty.handler.logging.LoggingHandler;
  * @Author: LiuShishuang
  * @Description:TODO
  * @Date: 18:04 2019/3/16
+ * 普通http请求 + rpc + 一对多 + 心跳监测 + websocket + protobuf
+ * =========================
+ * Server
+ * 服务端使用父子NioEventLoopGroup作为group
+ * 创建的ServerBootstrap(client为NioSocketChannel)
+ * group传递2个参数 +  channel为NIOServerSocketChannel + handler父类日志 + childHandler自定义
+ * bind端口号(client为connect)
+ * 优雅关闭(先boss,后work)
  */
 public class TestServer {
 
@@ -27,11 +35,11 @@ public class TestServer {
             //定义启动的组 + 通道 + 子处理器
             serverBootstrap
                     .group(bossGroup, workerGroup)
-                    .handler(new LoggingHandler(LogLevel.INFO))  //日志记录
                     //java nio用于网络编程
                     .channel(NioServerSocketChannel.class)
                     //对bossGroup的处理
-//                    .handler()
+                    //日志记录
+                    .handler(new LoggingHandler(LogLevel.INFO))
                     //对workerGroup的处理
                     .childHandler(new TestServerInitializer());
 

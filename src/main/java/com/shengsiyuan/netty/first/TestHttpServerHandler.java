@@ -14,7 +14,11 @@ import java.net.URI;
  * @Author: LiuShishuang
  * @Description:TODO
  * @Date: 18:20 2019/3/16
- * InBound读取客户端数据,OutBound客户端使用
+ * InBound读取客户端数据,OutBound客户端使用,ChannelInboundHandlerAdapter监听使用
+ * HTTPObject为http消息
+ * String为普通消息
+ * TextWebSocketFrame: Websocket文本消息使用
+ * Protobuf: 自定义消息
  */
 public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
     /**
