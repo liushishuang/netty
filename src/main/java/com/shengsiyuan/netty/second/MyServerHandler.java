@@ -14,7 +14,7 @@ public class MyServerHandler extends SimpleChannelInboundHandler<String> {
 
 
     /**
-     * 如果这里的代码如果同步,耗时,会阻塞netty => 使用业务线程池
+     * 不要将长时间执行的耗时任务放入到EventLoop中,而是使用一个专门的EventExecutor
      */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {

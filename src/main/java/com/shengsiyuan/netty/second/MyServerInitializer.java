@@ -14,6 +14,7 @@ import io.netty.util.CharsetUtil;
  * @Description:TODO
  * @Date: 21:13 2019/3/16
  * channel提供的pipeline,可以处理与当前channel关联的所有的事件和请求
+ * pipeline在AbstractChannel中就初始化了(channel和pipeline互为引用)
  * Netty中所有的IO操作都是异步的
  */
 public class MyServerInitializer extends ChannelInitializer<SocketChannel> {
@@ -29,6 +30,8 @@ public class MyServerInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
         pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
 
+        //可以传递EventExecutor来提供线程组
         pipeline.addLast(new MyServerHandler());
+
     }
 }

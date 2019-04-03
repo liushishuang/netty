@@ -41,14 +41,23 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  * 作为Key来寻找分发恰当的Event Handler回调方法.
  * 6. Initiation Dispatcher会回调Event Handler的handle_event回调方法来执行特定于应用的功能(开发者自己所编写的功能),从而响应这个事件,所发生的的事件类型可以
  * 作为该方法参数并被该方法内部使用来执行额外的特定于服务的分离与分发.
- *
  */
 public class MyServer {
 
     public static void main(String[] args) {
         //EventLoopGroup用于注册channel,一般使用NIO的实现
         //bossGroup的线程数 = 超线程 * 2
-        //EventLoop和线程数对应
+
+        /**
+         * 1. 一个EventLoopGroup当中包含一个或多个EventLoop
+         * 2. 一个EventLoop在整个生命周期中都会与唯一一个Thread进行绑定
+         * 3. 所有由EventLoop所处理的各种I/O事件都将在它所关联的那个Thread上进行处理
+         * 4. 一个Channel在它的整个生命周期中只会注册在一个EventLoop中
+         * 5. 一个EventLoop在运行过程中,会被分配给一个或者多个Channel(类似Selector和Channel)
+         *
+         * 多线程: 执行channel的任何操作,判断所在EventLoop所在线程,否则提交新任务=>
+         * 属于同一个channel的操作,任务的提交操作与执行顺序是一样的.Netty的实现一定是安全的,我们可以使用channel的引用处理多线程
+         */
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
@@ -62,10 +71,12 @@ public class MyServer {
                     .childHandler(new MyServerInitializer());
 
             //创建新的channel并进行绑定(使用的是上一步的反射)
-            //程序启动
-            ChannelFuture channelFuture = serverBootstrap.bind(8899).sync();
+            //程序启动(sync确保 bind真正成功)
+            ChannelFuture channelFuture = serverBootstrap
+                    .bind(8899)
+                    .sync();
+            //如果进行关闭,确保关闭完成
             channelFuture.channel().closeFuture().sync();
-
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {

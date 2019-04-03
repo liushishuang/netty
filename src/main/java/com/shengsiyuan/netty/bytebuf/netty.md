@@ -1,0 +1,1 @@
+引用计数(AtomicIntegerFieldUpdater 全局使用静态变量)
