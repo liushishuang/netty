@@ -39,7 +39,6 @@ repositories {
 dependencies {
     //编译测试时需要的依赖
     testCompile(
-//            compile group: 'junit', name: 'junit', version: '4.12'
             "junit:junit:4.12"
     )
     compile(

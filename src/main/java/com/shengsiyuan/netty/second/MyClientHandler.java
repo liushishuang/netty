@@ -12,14 +12,12 @@ import java.time.LocalDateTime;
  */
 public class MyClientHandler extends SimpleChannelInboundHandler<String> {
     /**
-     * 接收服务端数据,并返回数据
      * @param ctx
      * @param msg
      * @throws Exception
      */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        //远端地址
         System.out.println(ctx.channel().remoteAddress() + ":" + msg);
         ctx.writeAndFlush("from client: " + LocalDateTime.now());
     }
@@ -34,6 +32,5 @@ public class MyClientHandler extends SimpleChannelInboundHandler<String> {
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         cause.printStackTrace();
         ctx.close();
-//        super.exceptionCaught(ctx, cause);
     }
 }

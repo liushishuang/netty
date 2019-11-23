@@ -14,7 +14,6 @@ import java.io.InputStreamReader;
  * @Author: LiuShishuang
  * @Description:TODO
  * @Date: 23:36 2019/3/16
- * 多用户聊天程序 (一个服务端,多个客户端)
  */
 public class MyChatClient {
     public static void main(String[] args) {

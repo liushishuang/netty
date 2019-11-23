@@ -2,7 +2,7 @@ syntax = "proto2";
 package com.shengsiyuan.protobuf;
 
 //生成文件不允许修改和移动到其它包
-//protoc  --proto_path=路径 --java_out=src/main/java --python_out=DST_DIR  src/protobuf/Student.proto
+//protoc  --proto_path=路径 --java_out=src/main/java  src/protobuf/Student.proto
 //加快解析速度
 option optimize_for = SPEED;
 //java类独有的两个选项 生成的包名+类名
@@ -32,7 +32,7 @@ message MyMessage {
 }
 
 message Person {
-    //    不建议使用required
+    //不建议使用required
     //还有int64 bool
     //float,double,int32,int64,byte,string,bool
     //可变数组:uint32,uint64,  可变长编码(负数时用)sint32,sint64 固定数组fixed32,fixed64 固定长度:sfixed32,sfixed64

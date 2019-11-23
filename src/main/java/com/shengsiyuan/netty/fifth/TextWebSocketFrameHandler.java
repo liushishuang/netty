@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
  * @Author: LiuShishuang
  * @Description:TODO
  * @Date: 16:51 2019/3/17
- * TextWebSocketFrame: 六种类型,专门用于处理文本
  */
 public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 

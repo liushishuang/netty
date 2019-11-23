@@ -16,7 +16,6 @@ public class MyByteToLongDecoder2 extends ReplayingDecoder<Void> {
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
         System.out.println("decode2 invoked");
-        //不需要判断
         out.add(in.readLong());
     }
 }

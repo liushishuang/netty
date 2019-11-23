@@ -45,19 +45,6 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 public class MyServer {
 
     public static void main(String[] args) {
-        //EventLoopGroup用于注册channel,一般使用NIO的实现
-        //bossGroup的线程数 = 超线程 * 2
-
-        /**
-         * 1. 一个EventLoopGroup当中包含一个或多个EventLoop
-         * 2. 一个EventLoop在整个生命周期中都会与唯一一个Thread进行绑定
-         * 3. 所有由EventLoop所处理的各种I/O事件都将在它所关联的那个Thread上进行处理
-         * 4. 一个Channel在它的整个生命周期中只会注册在一个EventLoop中
-         * 5. 一个EventLoop在运行过程中,会被分配给一个或者多个Channel(类似Selector和Channel)
-         *
-         * 多线程: 执行channel的任何操作,判断所在EventLoop所在线程,否则提交新任务=>
-         * 属于同一个channel的操作,任务的提交操作与执行顺序是一样的.Netty的实现一定是安全的,我们可以使用channel的引用处理多线程
-         */
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
@@ -65,17 +52,13 @@ public class MyServer {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap
                     .group(bossGroup, workerGroup)
-                    //反射添加channel对象
-                    //NioServerSocketChannel底层使用
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new MyServerInitializer());
 
-            //创建新的channel并进行绑定(使用的是上一步的反射)
-            //程序启动(sync确保 bind真正成功)
             ChannelFuture channelFuture = serverBootstrap
                     .bind(8899)
                     .sync();
-            //如果进行关闭,确保关闭完成
+
             channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
